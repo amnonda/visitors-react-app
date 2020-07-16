@@ -1,0 +1,7 @@
+.firebase
+.firebaserc
+build
+node_modules
+public
+firebase.json
+yarn.lock
