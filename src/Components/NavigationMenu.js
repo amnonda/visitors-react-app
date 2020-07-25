@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-function NavigationMenu(props){
+function NavigationMenu(props) {
     return (
         <div>
             <div className="font-bold py-3">
@@ -9,8 +9,8 @@ function NavigationMenu(props){
             </div>
             <ul>
                 <li>
-                    <Link 
-                        to="/" 
+                    <Link
+                        to="/"
                         className="text-blue-500 py-3 border-t border-b block"
                         onClick={props.closeMenu}
                     >
@@ -18,8 +18,8 @@ function NavigationMenu(props){
                     </Link>
                 </li>
                 <li>
-                    <Link 
-                        to="/dashboard" 
+                    <Link
+                        to="/dashboard"
                         className="text-blue-500 py-3 border-b block"
                         onClick={props.closeMenu}
                     >

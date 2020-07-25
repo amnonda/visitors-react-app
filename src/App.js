@@ -9,28 +9,30 @@ import {
 import Home from './Views/Home'
 import About from './Views/Dashboard'
 import Visitor from './Views/Visitor'
-
+// import Example from './Components/Example'
 
 function App() {
+
   return (
     <div className="relative pb-10 min-h-screen">
 
       <Router>
-      <Header></Header>
+        <Header></Header>
+        {/* <Example></Example> */}
+        <div className="p-3">
+          <Switch>
 
-      <div className="p-3">
-      <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/dashboard">
-            <About></About>
-          </Route>
-          <Route path="/visitors/:id">
-            <Visitor></Visitor>
-          </Route>
-        </Switch>
-      </div>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/dashboard">
+              <About></About>
+            </Route>
+            <Route path="/visitors/:id">
+              <Visitor></Visitor>
+            </Route>
+          </Switch>
+        </div>
 
 
 
@@ -39,7 +41,6 @@ function App() {
 
       </Router>
 
-      {/* <CounterExample></CounterExample> */}
     </div>
 
 

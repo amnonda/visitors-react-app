@@ -17,26 +17,34 @@ function Visitor(props) {
     // this hook will return the id we asked for in the address bar
     const { id } = useParams()
     const [a_vote, setVote] = useState(null)
-    let a_name = "hi"
-    let a_url = "bi"
+    let a_name = ""
+    let a_url = ""
 
 
     const url = `https://5f078d479c5c250016307111.mockapi.io/api/v1/visitors/${id}`
-    // we want to use a loading symbol so we will use an object instead of null
-    // const [visitor, setVisitor] = useState(null)
-
 
     let visitor = useAxiosGet(url)
 
-    function save(e) {
-        console.log("saving...")
-        let aprod = { id: id, name: a_name, vote: a_vote, imageUrl: a_url }
-        e.preventDefault();
-        axios.put(url, aprod)
-            .then(() => {alert("Your choice was saved")})
-    }
+    // let request = { loading: false, data: null, error: false }
 
+    const [update_visitor, setUpdateVisitor] = useState(false);
 
+    useEffect(() => {
+        console.log("Visitor::UseEffect called")
+
+        // request = { loading: true, data: null, error: false }
+
+        if (update_visitor) {
+            let updated_visitor = { id: id, name: a_name, vote: a_vote, imageUrl: a_url }
+            axios.put(url, updated_visitor)
+                .then(response => {
+                    // request = { loading: false, data: response.data, error: false };
+                    setUpdateVisitor(false)
+                    alert("Your choice was saved")
+                })
+                .catch(() => { /*request = { loading: false, data: null, error: true } */})
+        }
+    })
     function FunctionDisplayName() {
         return (
             <div>
@@ -90,9 +98,9 @@ function Visitor(props) {
 
         return (
             <label className="bg-blue-500 text-white "
-                onClick={save}>Save</label>
+                onClick={() => setUpdateVisitor(true)}>Save</label>
 
-    
+
         )
 
     }
@@ -147,7 +155,7 @@ function Visitor(props) {
 
 
     return (
-        
+
         <div className="container mx-auto">
             {content}
         </div>
